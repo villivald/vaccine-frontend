@@ -8,7 +8,13 @@ const About = () => {
       <img src={aboutPic} height="150" style={{ marginTop: "20px" }} />
 
       <h2>
-        Live on <Link href="http://">Heroku</Link>
+        App live on <Link href="https://vaccine2021.vercel.app/">Vercel</Link>
+      </h2>
+      <h2>
+        API live on{" "}
+        <Link href="https://polar-basin-63646.herokuapp.com/api/vaccinations">
+          Heroku
+        </Link>
       </h2>
       <h2>
         Source Code on{" "}
@@ -40,7 +46,9 @@ const About = () => {
           <Link href="https://material-ui.com/">Material UI</Link>
         </p>
         <p>
-          <Link href="https://recharts.org/en-US/">Recharts</Link>
+          <Link href="http://reactchartjs.github.io/react-chartjs-2/#/">
+            react-chartjs-2
+          </Link>
         </p>
         <p>
           <Link href="https://www.drawkit.io/">Drawkit</Link>
@@ -49,7 +57,7 @@ const About = () => {
           <Link href="https://heroku.com/">Heroku</Link>
         </p>
         <p>
-          <Link href="https://axios-http.com/">Axios</Link>
+          <Link href="https://vercel.com/">Vercel</Link>
         </p>
       </div>
     </div>
