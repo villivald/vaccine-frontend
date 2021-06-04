@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import graph from "../images/graph.webp";
 import stats from "../images/stats.svg";
-import { PieChart, Pie, Cell } from "recharts";
+import PieChartInfo from "../components/graphs/PieChartInfo";
 
 const Info = ({ vaccines, vaccinations }) => {
   const vaccineAmount = (type) =>
@@ -60,8 +60,6 @@ const Info = ({ vaccines, vaccinations }) => {
       ).length,
     },
   ];
-
-  const COLORS = ["#8884d8", "#82ca9d", "#d84a26"];
 
   return (
     <div className="infoWrapper">
@@ -312,25 +310,8 @@ const Info = ({ vaccines, vaccinations }) => {
                 .substr(0, 4)}%`}
             </p>
           </div>
-          <div style={{ margin: "-50px 0 0 -50px" }}>
-            <PieChart width={400} height={400}>
-              <Pie
-                data={vaccineDataByGender}
-                cx="50%"
-                cy="50%"
-                labelLine={true}
-                label={`${vaccineDataByGender.value}`}
-                outerRadius={80}
-                dataKey="value"
-              >
-                {vaccineDataByGender.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-            </PieChart>
+          <div>
+            <PieChartInfo vaccinations={vaccinations} />
           </div>
         </Paper>
 

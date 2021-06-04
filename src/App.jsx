@@ -41,31 +41,23 @@ const App = () => {
       .filter((vaccine) => vaccine.arrived.includes(`2021-${month}`)).length;
   };
 
-  const data = [
-    {
-      name: "January",
-      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "01")}`,
-      Antiqua: `${vaccineAmount("Antiqua", "01")}`,
-      Zerpfy: `${vaccineAmount("Zerpfy", "01")}`,
-    },
-    {
-      name: "February",
-      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "02")}`,
-      Antiqua: `${vaccineAmount("Antiqua", "02")}`,
-      Zerpfy: `${vaccineAmount("Zerpfy", "02")}`,
-    },
-    {
-      name: "March",
-      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "03")}`,
-      Antiqua: `${vaccineAmount("Antiqua", "03")}`,
-      Zerpfy: `${vaccineAmount("Zerpfy", "03")}`,
-    },
-    {
-      name: "April",
-      SolarBhuddica: `${vaccineAmount("SolarBuddhica", "04")}`,
-      Antiqua: `${vaccineAmount("Antiqua", "04")}`,
-      Zerpfy: `${vaccineAmount("Zerpfy", "04")}`,
-    },
+  const solarData = [
+    vaccineAmount("SolarBuddhica", "01"),
+    vaccineAmount("SolarBuddhica", "02"),
+    vaccineAmount("SolarBuddhica", "03"),
+    vaccineAmount("SolarBuddhica", "04"),
+  ];
+  const antiquaData = [
+    vaccineAmount("Antiqua", "01"),
+    vaccineAmount("Antiqua", "02"),
+    vaccineAmount("Antiqua", "03"),
+    vaccineAmount("Antiqua", "04"),
+  ];
+  const zerpfyData = [
+    vaccineAmount("Zerpfy", "01"),
+    vaccineAmount("Zerpfy", "02"),
+    vaccineAmount("Zerpfy", "03"),
+    vaccineAmount("Zerpfy", "04"),
   ];
 
   const match = useRouteMatch("/vaccines/:id");
@@ -89,17 +81,25 @@ const App = () => {
           <About />
         </Route>
         <Route path="/solar">
-          <Solar vaccines={vaccines} data={data} vaccinations={vaccinations} />
+          <Solar
+            vaccines={vaccines}
+            solarData={solarData}
+            vaccinations={vaccinations}
+          />
         </Route>
         <Route path="/antiqua">
           <Antiqua
             vaccines={vaccines}
-            data={data}
+            antiquaData={antiquaData}
             vaccinations={vaccinations}
           />
         </Route>
         <Route path="/zerpfy">
-          <Zerpfy vaccines={vaccines} data={data} vaccinations={vaccinations} />
+          <Zerpfy
+            vaccines={vaccines}
+            zerpfyData={zerpfyData}
+            vaccinations={vaccinations}
+          />
         </Route>
         <Route path="/vaccines/:id">
           <CurrentVaccine vaccine={vaccine} />
@@ -114,7 +114,12 @@ const App = () => {
           <VaccinationList vaccinations={vaccinations} vaccines={vaccines} />
         </Route>
         <Route path="/graphs">
-          <Graphs vaccines={vaccines} data={data} />
+          <Graphs
+            vaccines={vaccines}
+            solarData={solarData}
+            antiquaData={antiquaData}
+            zerpfyData={zerpfyData}
+          />
         </Route>
         <Route path="/">
           <Info vaccines={vaccines} vaccinations={vaccinations} />
